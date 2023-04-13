@@ -1,0 +1,29 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+
+        canonical_list = []
+        
+        path_list = path.split('/')
+        print(path_list)
+
+        for directory in path_list:
+
+            if directory == '.':
+
+                continue
+                
+            if directory == '..':
+              
+                if len(canonical_list) > 0:
+
+                    canonical_list.pop()
+                
+                continue
+
+            if len(directory) == 0:
+
+                continue
+
+            canonical_list.append(directory)
+
+        return "/"+"/".join(canonical_list)
